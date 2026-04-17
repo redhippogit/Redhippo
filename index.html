@@ -5,314 +5,372 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>REDHIPPO // INSOMNIA VIBE CODER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #000000 !important;
+    background: #000000 !important;
+    color: #ff0000 !important;
+    font-family: 'VT323', 'Courier New', monospace !important;
+    min-height: 100vh !important;
+  }
 
-- { margin: 0; padding: 0; box-sizing: border-box; }
+- {
+  box-sizing: border-box;
+  }
 
-body {
-background: #000000;
-color: #cc0000;
-font-family: ‘VT323’, monospace;
-font-size: 22px;
-min-height: 100vh;
-padding: 2rem;
-cursor: default;
-line-height: 1.4;
-}
-
-body::before {
+body::after {
 content: ‘’;
 position: fixed;
 inset: 0;
 background: repeating-linear-gradient(
 0deg,
-transparent,
-transparent 3px,
-rgba(0,0,0,0.15) 3px,
-rgba(0,0,0,0.15) 4px
+transparent 0px,
+transparent 2px,
+rgba(0,0,0,0.12) 2px,
+rgba(0,0,0,0.12) 4px
 );
 pointer-events: none;
 z-index: 9999;
 }
 
-.page { max-width: 780px; margin: 0 auto; }
+.wrap {
+background: #000000;
+min-height: 100vh;
+padding: 40px 24px 60px;
+max-width: 860px;
+margin: 0 auto;
+}
 
-.header-block {
-border: 1px solid #cc0000;
-padding: 1rem 1.5rem;
-margin-bottom: 2rem;
+/* ── HEADER ── */
+.hdr {
+background: #000000;
+border: 2px solid #ff0000;
+padding: 24px 28px 20px;
+margin-bottom: 32px;
 text-align: center;
 }
 
-.header-top {
-font-size: 42px;
-letter-spacing: 0.2em;
+.hdr-title {
+font-family: ‘VT323’, monospace;
+font-size: 56px;
 color: #ff0000;
-animation: flicker 6s infinite;
+letter-spacing: 0.25em;
+line-height: 1;
+animation: flicker 7s infinite;
+display: block;
 }
 
-.header-sub {
-font-size: 20px;
-letter-spacing: 0.4em;
-color: #990000;
-margin-top: 0.2rem;
-}
-
-.header-divider {
-border: none;
-border-top: 1px solid #cc0000;
-margin: 0.8rem 0;
-opacity: 0.5;
-}
-
-.header-meta {
-font-size: 16px;
-color: #880000;
-letter-spacing: 0.15em;
-}
-
-@keyframes flicker {
-0%, 92%, 94%, 96%, 100% { opacity: 1; }
-93%, 95% { opacity: 0.6; }
-}
-
-.section-label {
-font-size: 16px;
-color: #770000;
-letter-spacing: 0.2em;
-margin-bottom: 0.5rem;
-padding-left: 0.2rem;
-}
-
-.repo-list {
-list-style: none;
-border: 1px solid #550000;
-}
-
-.repo-item { border-bottom: 1px solid #330000; }
-.repo-item:last-child { border-bottom: none; }
-
-.repo-link {
-display: grid;
-grid-template-columns: 180px 1fr 40px;
-align-items: center;
-gap: 1rem;
-padding: 0.55rem 1rem;
-text-decoration: none;
-color: #cc0000;
-transition: background 0.1s, color 0.1s;
-}
-
-.repo-link:hover { background: #cc0000; color: #000000; }
-.repo-link:hover .repo-desc { color: #000000; }
-.repo-link:hover .repo-num { color: #000000; }
-.repo-link:hover .repo-arrow { color: #000000; }
-
-.repo-num {
-font-size: 16px;
-color: #660000;
-letter-spacing: 0.05em;
-white-space: nowrap;
-}
-
-.repo-name-col {
-display: flex;
-flex-direction: column;
-gap: 0.05rem;
-}
-
-.repo-name {
-font-size: 24px;
-letter-spacing: 0.08em;
-}
-
-.repo-desc {
-font-size: 16px;
-color: #880000;
-letter-spacing: 0.03em;
-transition: color 0.1s;
-}
-
-.repo-arrow {
+.hdr-sub {
+font-family: ‘VT323’, monospace;
 font-size: 22px;
-color: #550000;
-text-align: right;
+color: #880000;
+letter-spacing: 0.5em;
+display: block;
+margin-top: 6px;
 }
 
-.footer-block {
-border: 1px solid #330000;
+.hdr-rule {
+border: none;
 border-top: 1px solid #550000;
-padding: 0.8rem 1.5rem;
-margin-top: 2rem;
-text-align: center;
-font-size: 16px;
-color: #550000;
+margin: 16px 0;
+}
+
+.hdr-meta {
+font-family: ‘VT323’, monospace;
+font-size: 17px;
+color: #660000;
 letter-spacing: 0.2em;
 }
 
 .blink {
-animation: blink-anim 1.2s step-end infinite;
-}
-@keyframes blink-anim {
-0%, 100% { opacity: 1; }
-50% { opacity: 0; }
+animation: blink 1s step-end infinite;
+color: #ff0000;
 }
 
-@media (max-width: 600px) {
-body { font-size: 18px; padding: 1rem; }
-.repo-link { grid-template-columns: 1fr 30px; }
-.repo-num { display: none; }
+@keyframes blink {
+0%, 100% { opacity: 1; }
+50%       { opacity: 0; }
+}
+
+@keyframes flicker {
+0%,90%,92%,94%,100% { opacity: 1; }
+91%,93% { opacity: 0.5; }
+}
+
+/* ── LABEL ── */
+.lbl {
+font-family: ‘VT323’, monospace;
+font-size: 17px;
+color: #660000;
+letter-spacing: 0.25em;
+margin-bottom: 8px;
+display: block;
+background: #000000;
+}
+
+/* ── PROJECT LIST ── */
+.plist {
+background: #000000;
+border: 1px solid #440000;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+.plist li {
+background: #000000;
+border-bottom: 1px solid #220000;
+}
+
+.plist li:last-child {
+border-bottom: none;
+}
+
+.plist a {
+background: #000000;
+display: grid;
+grid-template-columns: 46px 1fr auto;
+align-items: center;
+gap: 14px;
+padding: 12px 16px;
+text-decoration: none;
+color: #cc0000;
+font-family: ‘VT323’, monospace;
+transition: background 0.08s;
+}
+
+.plist a:hover {
+background: #cc0000 !important;
+color: #000000 !important;
+}
+
+.plist a:hover .num  { color: #000000; }
+.plist a:hover .desc { color: #000000; }
+.plist a:hover .arr  { color: #000000; }
+
+.num {
+font-size: 16px;
+color: #550000;
+letter-spacing: 0.05em;
+text-align: right;
+white-space: nowrap;
+}
+
+.info {
+display: flex;
+flex-direction: column;
+gap: 1px;
+}
+
+.name {
+font-size: 26px;
+color: inherit;
+letter-spacing: 0.1em;
+line-height: 1;
+}
+
+.desc {
+font-size: 17px;
+color: #880000;
+letter-spacing: 0.04em;
+line-height: 1.2;
+}
+
+.arr {
+font-size: 26px;
+color: #440000;
+text-align: right;
+}
+
+/* ── FOOTER ── */
+.ftr {
+background: #000000;
+border: 1px solid #330000;
+border-top: 1px solid #440000;
+margin-top: 28px;
+padding: 14px 20px;
+text-align: center;
+font-family: ‘VT323’, monospace;
+font-size: 17px;
+color: #440000;
+letter-spacing: 0.2em;
+}
+
+@media (max-width: 560px) {
+.hdr-title { font-size: 38px; }
+.plist a { grid-template-columns: 1fr auto; gap: 8px; padding: 10px 12px; }
+.num { display: none; }
 }
 </style>
 
 </head>
-<body>
-<div class="page">
+<body style="background:#000000 !important; margin:0; padding:0;">
 
-  <div class="header-block">
-    <div class="header-top">█ REDHIPPO █</div>
-    <div class="header-sub">// INSOMNIA VIBE CODER //</div>
-    <hr class="header-divider">
-    <div class="header-meta">13 REPOS &nbsp;·&nbsp; ALL HTML &nbsp;·&nbsp; GITHUB 2026 &nbsp;·&nbsp; <span class="blink">■</span></div>
+<div class="wrap" style="background:#000000;">
+
+  <div class="hdr">
+    <span class="hdr-title">█ REDHIPPO █</span>
+    <span class="hdr-sub">// INSOMNIA VIBE CODER //</span>
+    <hr class="hdr-rule">
+    <span class="hdr-meta">13 REPOS &nbsp;·&nbsp; GITHUB PAGES &nbsp;·&nbsp; 2026 &nbsp;·&nbsp;<span class="blink"> ■</span></span>
   </div>
 
-  <div class="section-label">&gt; PROJEKTE — KLICK ZUM ÖFFNEN</div>
+<span class="lbl">> ALLE PROJEKTE — ANKLICKEN UND LOS</span>
 
-  <ul class="repo-list">
-    <li class="repo-item">
-      <a class="repo-link" href="https://github.com/redhippogit/Testsnob" target="_blank">
-        <span class="repo-num">[01] ⚡ 1 MIN AGO</span>
-        <span class="repo-name-col">
-          <span class="repo-name">TESTSNOB</span>
-          <span class="repo-desc">Playground & Sandbox — Ideen-Labor</span>
-        </span>
-        <span class="repo-arrow">»</span>
-      </a>
-    </li>
-    <li class="repo-item">
-      <a class="repo-link" href="https://github.com/redhippogit/Steel" target="_blank">
-        <span class="repo-num">[02] 20H AGO</span>
-        <span class="repo-name-col">
-          <span class="repo-name">STEEL</span>
-          <span class="repo-desc">Hartes Projekt — built tough</span>
-        </span>
-        <span class="repo-arrow">»</span>
-      </a>
-    </li>
-    <li class="repo-item">
-      <a class="repo-link" href="https://github.com/redhippogit/SNOB" target="_blank">
-        <span class="repo-num">[03] YESTERDAY</span>
-        <span class="repo-name-col">
-          <span class="repo-name">SNOB</span>
-          <span class="repo-desc">Premium UI — nur das Beste</span>
-        </span>
-        <span class="repo-arrow">»</span>
-      </a>
-    </li>
-    <li class="repo-item">
-      <a class="repo-link" href="https://github.com/redhippogit/Ferien" target="_blank">
-        <span class="repo-num">[04] 2D AGO</span>
-        <span class="repo-name-col">
-          <span class="repo-name">FERIEN</span>
-          <span class="repo-desc">Ferienplaner — Freizeit digital</span>
-        </span>
-        <span class="repo-arrow">»</span>
-      </a>
-    </li>
-    <li class="repo-item">
-      <a class="repo-link" href="https://github.com/redhippogit/Leagal" target="_blank">
-        <span class="repo-num">[05] 3D AGO</span>
-        <span class="repo-name-col">
-          <span class="repo-name">LEAGAL</span>
-          <span class="repo-desc">Legal-Seite — Impressum & Datenschutz</span>
-        </span>
-        <span class="repo-arrow">»</span>
-      </a>
-    </li>
-    <li class="repo-item">
-      <a class="repo-link" href="https://github.com/redhippogit/Ferienpass" target="_blank">
-        <span class="repo-num">[06] 3D AGO</span>
-        <span class="repo-name-col">
-          <span class="repo-name">FERIENPASS</span>
-          <span class="repo-desc">Aktivitäten & Angebote für Kids</span>
-        </span>
-        <span class="repo-arrow">»</span>
-      </a>
-    </li>
-    <li class="repo-item">
-      <a class="repo-link" href="https://github.com/redhippogit/CI" target="_blank">
-        <span class="repo-num">[07] 3D AGO</span>
-        <span class="repo-name-col">
-          <span class="repo-name">CI</span>
-          <span class="repo-desc">Corporate Identity — Brand-Kit</span>
-        </span>
-        <span class="repo-arrow">»</span>
-      </a>
-    </li>
-    <li class="repo-item">
-      <a class="repo-link" href="https://github.com/redhippogit/sober" target="_blank">
-        <span class="repo-num">[08] LAST WEEK</span>
-        <span class="repo-name-col">
-          <span class="repo-name">SOBER</span>
-          <span class="repo-desc">Clean & minimal — kein Bullshit</span>
-        </span>
-        <span class="repo-arrow">»</span>
-      </a>
-    </li>
-    <li class="repo-item">
-      <a class="repo-link" href="https://github.com/redhippogit/jensjob" target="_blank">
-        <span class="repo-num">[09] 2W AGO</span>
-        <span class="repo-name-col">
-          <span class="repo-name">JENSJOB</span>
-          <span class="repo-desc">Job-Profil — wer Jens ist</span>
-        </span>
-        <span class="repo-arrow">»</span>
-      </a>
-    </li>
-    <li class="repo-item">
-      <a class="repo-link" href="https://github.com/redhippogit/Vanjens" target="_blank">
-        <span class="repo-num">[10] 2W AGO</span>
-        <span class="repo-name-col">
-          <span class="repo-name">VANJENS</span>
-          <span class="repo-desc">Van-Life Seite — on the road</span>
-        </span>
-        <span class="repo-arrow">»</span>
-      </a>
-    </li>
-    <li class="repo-item">
-      <a class="repo-link" href="https://github.com/redhippogit/Fam" target="_blank">
-        <span class="repo-num">[11] 2W AGO</span>
-        <span class="repo-name-col">
-          <span class="repo-name">FAM</span>
-          <span class="repo-desc">Familien-Seite — für die die zählen</span>
-        </span>
-        <span class="repo-arrow">»</span>
-      </a>
-    </li>
-    <li class="repo-item">
-      <a class="repo-link" href="https://github.com/redhippogit/Familea" target="_blank">
-        <span class="repo-num">[12] 2W AGO</span>
-        <span class="repo-name-col">
-          <span class="repo-name">FAMILEA</span>
-          <span class="repo-desc">Community rund um Familien</span>
-        </span>
-        <span class="repo-arrow">»</span>
-      </a>
-    </li>
-    <li class="repo-item">
-      <a class="repo-link" href="https://github.com/redhippogit/helvetiaholt" target="_blank">
-        <span class="repo-num">[13] 3W AGO</span>
-        <span class="repo-name-col">
-          <span class="repo-name">HELVETIAHOLT</span>
-          <span class="repo-desc">Swiss-Roots — lokal & bodenständig</span>
-        </span>
-        <span class="repo-arrow">»</span>
-      </a>
-    </li>
+  <ul class="plist">
+
+```
+<li>
+  <a href="https://redhippogit.github.io/Testsnob/" target="_blank">
+    <span class="num">01</span>
+    <span class="info">
+      <span class="name">TESTSNOB</span>
+      <span class="desc">Playground & Sandbox — Ideen-Labor, frisch updated</span>
+    </span>
+    <span class="arr">»</span>
+  </a>
+</li>
+
+<li>
+  <a href="https://redhippogit.github.io/Steel/" target="_blank">
+    <span class="num">02</span>
+    <span class="info">
+      <span class="name">STEEL</span>
+      <span class="desc">Hartes, robustes Projekt — built tough, designed to last</span>
+    </span>
+    <span class="arr">»</span>
+  </a>
+</li>
+
+<li>
+  <a href="https://redhippogit.github.io/SNOB/" target="_blank">
+    <span class="num">03</span>
+    <span class="info">
+      <span class="name">SNOB</span>
+      <span class="desc">Premium UI — nur das Beste, kein Kompromiss</span>
+    </span>
+    <span class="arr">»</span>
+  </a>
+</li>
+
+<li>
+  <a href="https://redhippogit.github.io/Ferien/" target="_blank">
+    <span class="num">04</span>
+    <span class="info">
+      <span class="name">FERIEN</span>
+      <span class="desc">Ferienplaner — Freizeit & Ausflüge digital organisiert</span>
+    </span>
+    <span class="arr">»</span>
+  </a>
+</li>
+
+<li>
+  <a href="https://redhippogit.github.io/Leagal/" target="_blank">
+    <span class="num">05</span>
+    <span class="info">
+      <span class="name">LEAGAL</span>
+      <span class="desc">Legal-Seite — Impressum, Datenschutz, fertig</span>
+    </span>
+    <span class="arr">»</span>
+  </a>
+</li>
+
+<li>
+  <a href="https://redhippogit.github.io/Ferienpass/" target="_blank">
+    <span class="num">06</span>
+    <span class="info">
+      <span class="name">FERIENPASS</span>
+      <span class="desc">Aktivitäten & Angebote für Kids — kompakt & übersichtlich</span>
+    </span>
+    <span class="arr">»</span>
+  </a>
+</li>
+
+<li>
+  <a href="https://redhippogit.github.io/CI/" target="_blank">
+    <span class="num">07</span>
+    <span class="info">
+      <span class="name">CI</span>
+      <span class="desc">Corporate Identity — Brand-Kit, Farben, Style-Guide</span>
+    </span>
+    <span class="arr">»</span>
+  </a>
+</li>
+
+<li>
+  <a href="https://redhippogit.github.io/sober/" target="_blank">
+    <span class="num">08</span>
+    <span class="info">
+      <span class="name">SOBER</span>
+      <span class="desc">Clean & minimal — kein Bullshit, nur das Wesentliche</span>
+    </span>
+    <span class="arr">»</span>
+  </a>
+</li>
+
+<li>
+  <a href="https://redhippogit.github.io/jensjob/" target="_blank">
+    <span class="num">09</span>
+    <span class="info">
+      <span class="name">JENSJOB</span>
+      <span class="desc">Job-Profil — wer Jens ist und was er draufhat</span>
+    </span>
+    <span class="arr">»</span>
+  </a>
+</li>
+
+<li>
+  <a href="https://redhippogit.github.io/Vanjens/" target="_blank">
+    <span class="num">10</span>
+    <span class="info">
+      <span class="name">VANJENS</span>
+      <span class="desc">Van-Life von Jens — on the road vibes</span>
+    </span>
+    <span class="arr">»</span>
+  </a>
+</li>
+
+<li>
+  <a href="https://redhippogit.github.io/Fam/" target="_blank">
+    <span class="num">11</span>
+    <span class="info">
+      <span class="name">FAM</span>
+      <span class="desc">Familien-Seite — privat, persönlich, für die die zählen</span>
+    </span>
+    <span class="arr">»</span>
+  </a>
+</li>
+
+<li>
+  <a href="https://redhippogit.github.io/Familea/" target="_blank">
+    <span class="num">12</span>
+    <span class="info">
+      <span class="name">FAMILEA</span>
+      <span class="desc">Familien-Community — Service & Infos rund ums Thema</span>
+    </span>
+    <span class="arr">»</span>
+  </a>
+</li>
+
+<li>
+  <a href="https://redhippogit.github.io/helvetiaholt/" target="_blank">
+    <span class="num">13</span>
+    <span class="info">
+      <span class="name">HELVETIAHOLT</span>
+      <span class="desc">Swiss-Roots — Helvetia trifft Wald, lokal & bodenständig</span>
+    </span>
+    <span class="arr">»</span>
+  </a>
+</li>
+```
+
   </ul>
 
-  <div class="footer-block">
+  <div class="ftr">
     REDHIPPO &nbsp;·&nbsp; BUILT AT 3AM &nbsp;·&nbsp; CAFFEINE POWERED &nbsp;·&nbsp; ZERO REGRETS
   </div>
 
