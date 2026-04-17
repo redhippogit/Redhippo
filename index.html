@@ -3,389 +3,326 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#000000">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <title>REDHIPPO</title>
-<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --red:      #ff2200;
-    --red-mid:  #cc1100;
-    --red-dim:  #880000;
-    --red-dark: #440000;
-    --red-deep: #220000;
-    --black:    #000000;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html, body {
-margin: 0; padding: 0;
-background: var(–black) !important;
-color: var(–red);
-font-family: ‘VT323’, ‘Courier New’, monospace;
-min-height: 100vh;
--webkit-font-smoothing: none;
-font-smooth: never;
+html {
+background: #000;
 }
 
-/* scanlines */
-body::before {
-content: ‘’;
-position: fixed; inset: 0;
-background: repeating-linear-gradient(
-0deg, transparent 0, transparent 2px,
-rgba(0,0,0,0.10) 2px, rgba(0,0,0,0.10) 4px
-);
-pointer-events: none;
-z-index: 9999;
+body {
+background: #000;
+color: #ff2200;
+font-family: ‘Courier New’, Courier, monospace;
+font-size: 16px;
+min-height: 100vh;
+padding: 16px;
 }
 
-/* ── LAYOUT ── */
-.app {
-background: var(–black);
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-max-width: 860px;
+.wrap {
+max-width: 800px;
 margin: 0 auto;
-padding: 20px 16px 48px;
 }
 
-/* ── HEADER ── */
+/* HEADER */
 .hdr {
-border: 2px solid var(–red);
-padding: 20px 20px 16px;
-margin-bottom: 20px;
+border: 2px solid #ff2200;
+padding: 20px;
+margin-bottom: 16px;
 text-align: center;
-background: var(–black);
-flex-shrink: 0;
 }
 
-.hdr-logo {
-font-size: clamp(36px, 10vw, 58px);
-color: var(–red);
+.hdr h1 {
+font-size: clamp(28px, 8vw, 52px);
+font-weight: bold;
 letter-spacing: 0.2em;
-animation: flicker 9s infinite;
-display: block;
+color: #ff2200;
 line-height: 1;
 }
 
-.hdr-sub {
-font-size: clamp(14px, 3.5vw, 19px);
-color: var(–red-dim);
-letter-spacing: clamp(0.2em, 2vw, 0.5em);
-display: block;
-margin-top: 4px;
+.hdr p {
+font-size: clamp(11px, 3vw, 16px);
+color: #880000;
+letter-spacing: 0.3em;
+margin-top: 6px;
 }
 
-.hdr-rule {
+.hdr hr {
 border: none;
-border-top: 1px solid var(–red-dark);
+border-top: 1px solid #440000;
 margin: 12px 0;
 }
 
-.hdr-meta {
-font-size: clamp(12px, 2.8vw, 15px);
-color: var(–red-dark);
+.hdr .meta {
+font-size: clamp(10px, 2.5vw, 13px);
+color: #550000;
 letter-spacing: 0.15em;
 }
 
-/* ── STATUS BAR ── */
-.statusbar {
-background: var(–black);
-border: 1px solid var(–red-dark);
+/* STATUS */
+.status {
+background: #000;
+border: 1px solid #440000;
 border-bottom: none;
-padding: 7px 12px;
-font-size: clamp(11px, 2.5vw, 14px);
-color: var(–red-dark);
-letter-spacing: 0.12em;
+padding: 6px 12px;
+font-size: clamp(10px, 2.5vw, 13px);
+color: #550000;
+letter-spacing: 0.1em;
 display: flex;
 justify-content: space-between;
 align-items: center;
+gap: 8px;
 flex-wrap: wrap;
-gap: 4px;
-flex-shrink: 0;
 }
 
-.live-dot {
+.dot {
 display: inline-block;
 width: 7px; height: 7px;
-background: var(–red);
+background: #ff2200;
 border-radius: 50%;
 margin-right: 5px;
-animation: blink 1.4s step-end infinite;
+animation: bl 1.2s step-end infinite;
 vertical-align: middle;
 }
 
-/* ── REPO LIST ── */
-#repo-list {
+button {
+background: #000;
+border: 1px solid #440000;
+color: #880000;
+font-family: ‘Courier New’, monospace;
+font-size: clamp(10px, 2.5vw, 13px);
+letter-spacing: 0.1em;
+padding: 4px 10px;
+cursor: pointer;
+}
+
+button:hover, button:active {
+background: #ff2200;
+color: #000;
+}
+
+/* LIST */
+ul {
 list-style: none;
-background: var(–black);
-border: 1px solid var(–red-dark);
-flex: 1;
+border: 1px solid #440000;
 }
 
-#repo-list li {
-background: var(–black);
-border-bottom: 1px solid var(–red-deep);
+li {
+border-bottom: 1px solid #220000;
 }
 
-#repo-list li:last-child { border-bottom: none; }
+li:last-child { border-bottom: none; }
 
-#repo-list a {
+a {
 display: grid;
-grid-template-columns: 32px 1fr 28px;
+grid-template-columns: 30px 1fr 20px;
 align-items: center;
-gap: 12px;
-padding: 10px 14px;
+gap: 10px;
+padding: 10px 12px;
 text-decoration: none;
-color: var(–red-mid);
-background: var(–black);
-font-family: ‘VT323’, monospace;
-/* tap highlight */
--webkit-tap-highlight-color: rgba(204,17,0,0.2);
-transition: background 0.08s;
-cursor: pointer;
+color: #cc1100;
+background: #000;
+font-family: ‘Courier New’, monospace;
 }
 
-#repo-list a:hover,
-#repo-list a:active {
-background: var(–red) !important;
-color: var(–black) !important;
+a:hover, a:active {
+background: #ff2200;
+color: #000;
 }
 
-#repo-list a:hover .rnum,
-#repo-list a:active .rnum,
-#repo-list a:hover .rdesc,
-#repo-list a:active .rdesc,
-#repo-list a:hover .rarr,
-#repo-list a:active .rarr {
-color: var(–black) !important;
+a:hover .desc, a:active .desc { color: #000; }
+a:hover .num, a:active .num { color: #000; }
+a:hover .arr, a:active .arr { color: #000; }
+
+.num {
+font-size: 11px;
+color: #440000;
+text-align: right;
 }
 
-.rnum  { font-size: 14px; color: var(–red-dark); text-align: right; line-height:1; }
-.rinfo { display: flex; flex-direction: column; gap: 0; min-width: 0; }
-.rname {
-font-size: clamp(18px, 4.5vw, 24px);
-color: inherit;
-letter-spacing: 0.08em;
-line-height: 1.1;
+.info {
+display: flex;
+flex-direction: column;
+min-width: 0;
+}
+
+.name {
+font-size: clamp(15px, 4vw, 20px);
+font-weight: bold;
+letter-spacing: 0.06em;
 white-space: nowrap;
 overflow: hidden;
 text-overflow: ellipsis;
 }
-.rdesc {
-font-size: clamp(12px, 3vw, 15px);
-color: var(–red-dim);
-letter-spacing: 0.03em;
-line-height: 1.2;
+
+.desc {
+font-size: clamp(10px, 2.5vw, 13px);
+color: #880000;
+letter-spacing: 0.02em;
 white-space: nowrap;
 overflow: hidden;
 text-overflow: ellipsis;
 }
-.rarr { font-size: 20px; color: var(–red-dark); text-align: right; }
 
-/* ── LOADING / ERROR / MSG ── */
-.msg {
-background: var(–black);
-border: 1px solid var(–red-dark);
-padding: 32px 16px;
-text-align: center;
-font-size: clamp(16px, 4vw, 22px);
-color: var(–red-dark);
-letter-spacing: 0.18em;
-line-height: 1.6;
+.arr {
+font-size: 16px;
+color: #440000;
+text-align: right;
 }
 
-/* ── FOOTER ── */
+/* FOOTER */
 footer {
-background: var(–black);
-border: 1px solid var(–red-deep);
-border-top: 1px solid var(–red-dark);
-margin-top: 20px;
-padding: 10px 16px;
+border: 1px solid #220000;
+border-top: 1px solid #440000;
+margin-top: 16px;
+padding: 10px;
 text-align: center;
-font-size: clamp(11px, 2.5vw, 14px);
-color: var(–red-dark);
-letter-spacing: 0.18em;
-flex-shrink: 0;
-}
-
-/* ── REFRESH BUTTON ── */
-.refresh-btn {
-background: var(–black);
-border: 1px solid var(–red-dark);
-color: var(–red-dark);
-font-family: ‘VT323’, monospace;
-font-size: clamp(13px, 3vw, 16px);
+font-size: clamp(9px, 2vw, 12px);
+color: #440000;
 letter-spacing: 0.15em;
-padding: 6px 14px;
-cursor: pointer;
-transition: all 0.1s;
 }
 
-.refresh-btn:hover, .refresh-btn:active {
-background: var(–red-dark);
-color: var(–black);
+/* MSG */
+.msg {
+border: 1px solid #440000;
+padding: 30px;
+text-align: center;
+font-size: clamp(13px, 3vw, 18px);
+color: #660000;
+letter-spacing: 0.15em;
 }
 
-/* ── ANIMATIONS ── */
-@keyframes blink   { 50% { opacity: 0; } }
-@keyframes flicker {
-0%,88%,90%,92%,100% { opacity:1; }
-89%,91% { opacity:0.35; }
-}
-@keyframes fadein {
-from { opacity:0; transform: translateY(6px); }
-to   { opacity:1; transform: translateY(0); }
-}
-
-#repo-list li {
-animation: fadein 0.3s ease both;
-}
-
-/* stagger */
-#repo-list li:nth-child(1)  { animation-delay: 0.02s }
-#repo-list li:nth-child(2)  { animation-delay: 0.05s }
-#repo-list li:nth-child(3)  { animation-delay: 0.08s }
-#repo-list li:nth-child(4)  { animation-delay: 0.11s }
-#repo-list li:nth-child(5)  { animation-delay: 0.14s }
-#repo-list li:nth-child(6)  { animation-delay: 0.17s }
-#repo-list li:nth-child(7)  { animation-delay: 0.20s }
-#repo-list li:nth-child(8)  { animation-delay: 0.23s }
-#repo-list li:nth-child(9)  { animation-delay: 0.26s }
-#repo-list li:nth-child(10) { animation-delay: 0.29s }
-#repo-list li:nth-child(11) { animation-delay: 0.32s }
-#repo-list li:nth-child(12) { animation-delay: 0.35s }
-#repo-list li:nth-child(13) { animation-delay: 0.38s }
-
-/* ── MOBILE SAFE AREA ── */
-@supports (padding-bottom: env(safe-area-inset-bottom)) {
-.app { padding-bottom: calc(48px + env(safe-area-inset-bottom)); }
-}
+@keyframes bl { 50% { opacity: 0; } }
 </style>
 
 </head>
-<body style="background:#000000!important;margin:0;padding:0">
-<div class="app">
+<body>
+<div class="wrap">
 
-  <header class="hdr">
-    <span class="hdr-logo">█ REDHIPPO █</span>
-    <span class="hdr-sub">// INSOMNIA VIBE CODER //</span>
-    <hr class="hdr-rule">
-    <span class="hdr-meta">LIVE GITHUB DASHBOARD &nbsp;·&nbsp; AUTO-UPDATE &nbsp;·&nbsp; <span class="blink">■</span></span>
-  </header>
-
-  <div class="statusbar">
-    <span><span class="live-dot"></span>api.github.com/redhippogit</span>
-    <span id="repo-count">LÄDT...</span>
-    <button class="refresh-btn" onclick="loadRepos()">↺ RELOAD</button>
+  <div class="hdr">
+    <h1>// REDHIPPO //</h1>
+    <p>INSOMNIA VIBE CODER</p>
+    <hr>
+    <p class="meta">LIVE GITHUB DASHBOARD &nbsp;·&nbsp; <span id="blink" style="animation:bl 1s step-end infinite;display:inline-block">■</span></p>
   </div>
 
-  <div id="output">
-    <div class="msg"><span class="blink">█</span> VERBINDE... <span class="blink">█</span></div>
+  <div class="status">
+    <span><span class="dot"></span>api.github.com · redhippogit</span>
+    <span id="cnt">LÄDT...</span>
+    <button onclick="load()">↺ RELOAD</button>
   </div>
 
-  <footer>
-    REDHIPPO &nbsp;·&nbsp; 3AM &nbsp;·&nbsp; CAFFEINE &nbsp;·&nbsp; GITHUB LIVE &nbsp;·&nbsp; <span id="ts">–</span>
-  </footer>
+  <div id="out">
+    <div class="msg">VERBINDE MIT GITHUB...</div>
+  </div>
+
+  <footer>REDHIPPO · BUILT AT 3AM · GITHUB LIVE · <span id="ts">–</span></footer>
 
 </div>
 <script>
-const USER     = 'redhippogit';
-const PAGES    = 'https://redhippogit.github.io/';
+var USER  = 'redhippogit';
+var BASE  = 'https://redhippogit.github.io/';
 
-// Hardcoded fallback (shown if API blocked by CORS in preview)
-const FALLBACK = [
-{ name:‘Testsnob’,     description:‘Playground & Sandbox — Ideen-Labor’,            updated_at: new Date() },
-{ name:‘Steel’,        description:‘Hartes Projekt — built tough’,                   updated_at: new Date() },
-{ name:‘SNOB’,         description:‘Premium UI — nur das Beste’,                     updated_at: new Date() },
-{ name:‘Ferien’,       description:‘Ferienplaner — Freizeit digital’,                updated_at: new Date() },
-{ name:‘Leagal’,       description:‘Legal-Seite — Impressum & Datenschutz’,          updated_at: new Date() },
-{ name:‘Ferienpass’,   description:‘Aktivitäten & Angebote für Kids’,                updated_at: new Date() },
-{ name:‘CI’,           description:‘Corporate Identity — Brand-Kit & Style-Guide’,   updated_at: new Date() },
-{ name:‘sober’,        description:‘Clean & minimal — kein Bullshit’,                updated_at: new Date() },
-{ name:‘jensjob’,      description:‘Job-Profil — wer Jens ist’,                      updated_at: new Date() },
-{ name:‘Vanjens’,      description:‘Van-Life Seite — on the road’,                   updated_at: new Date() },
-{ name:‘Fam’,          description:‘Familien-Seite — für die die zählen’,            updated_at: new Date() },
-{ name:‘Familea’,      description:‘Familien-Community — Service & Infos’,           updated_at: new Date() },
-{ name:‘helvetiaholt’, description:‘Swiss-Roots — lokal & bodenständig’,             updated_at: new Date() },
+var REPOS = [
+{name:‘Testsnob’,     d:‘Playground & Sandbox — Ideen-Labor’},
+{name:‘Steel’,        d:‘Hartes Projekt — built tough’},
+{name:‘SNOB’,         d:‘Premium UI — nur das Beste’},
+{name:‘Ferien’,       d:‘Ferienplaner — Freizeit digital’},
+{name:‘Leagal’,       d:‘Legal-Seite — Impressum & Datenschutz’},
+{name:‘Ferienpass’,   d:‘Aktivitäten & Angebote für Kids’},
+{name:‘CI’,           d:‘Corporate Identity — Brand-Kit’},
+{name:‘sober’,        d:‘Clean & minimal — kein Bullshit’},
+{name:‘jensjob’,      d:‘Job-Profil — wer Jens ist’},
+{name:‘Vanjens’,      d:‘Van-Life Seite — on the road’},
+{name:‘Fam’,          d:‘Familien-Seite — für die die zählen’},
+{name:‘Familea’,      d:‘Familien-Community — Service & Infos’},
+{name:‘helvetiaholt’, d:‘Swiss-Roots — lokal & bodenständig’}
 ];
 
-async function loadRepos() {
-document.getElementById(‘output’).innerHTML =
-‘<div class="msg"><span class="blink">█</span> LÄDT… <span class="blink">█</span></div>’;
-document.getElementById(‘repo-count’).textContent = ‘LÄDT…’;
-
-let repos = null;
-let live  = false;
-
-try {
-const res = await fetch(
-`https://api.github.com/users/${USER}/repos?sort=updated&per_page=100`,
-{ headers: { Accept: ‘application/vnd.github+json’ } }
-);
-if (!res.ok) throw new Error(res.status);
-repos = await res.json();
-live  = true;
-} catch(e) {
-repos = FALLBACK;
-}
-
-renderRepos(repos, live);
-}
-
-function renderRepos(repos, live) {
-const now = new Date();
+function render(list) {
+var now = new Date();
 document.getElementById(‘ts’).textContent =
 now.toLocaleTimeString(‘de-CH’,{hour:‘2-digit’,minute:‘2-digit’});
-document.getElementById(‘repo-count’).textContent =
-repos.length + ’ REPOS’ + (live ? ’ · LIVE’ : ’ · CACHED’);
 
-const ul = document.createElement(‘ul’);
-ul.id = ‘repo-list’;
+var ul = document.createElement(‘ul’);
 
-repos.forEach((r, i) => {
-const li = document.createElement(‘li’);
-const a  = document.createElement(‘a’);
-a.href   = PAGES + r.name + ‘/’;
+for (var i = 0; i < list.length; i++) {
+var r  = list[i];
+var li = document.createElement(‘li’);
+var a  = document.createElement(‘a’);
+a.href   = BASE + r.name + ‘/’;
 a.target = ‘_blank’;
 a.rel    = ‘noopener noreferrer’;
 
 ```
-const age = timeAgo(new Date(r.updated_at));
+var desc = r.description || r.d || '–';
+var updated = r.updated_at ? ago(new Date(r.updated_at)) : '';
 
 a.innerHTML =
-  `<span class="rnum">${String(i+1).padStart(2,'0')}</span>` +
-  `<span class="rinfo">` +
-    `<span class="rname">${r.name.toUpperCase()}</span>` +
-    `<span class="rdesc">${r.description || '–'} · ${age}</span>` +
-  `</span>` +
-  `<span class="rarr">»</span>`;
+  '<span class="num">' + String(i+1).padStart(2,'0') + '</span>' +
+  '<span class="info">' +
+    '<span class="name">' + r.name.toUpperCase() + '</span>' +
+    '<span class="desc">' + desc + (updated ? ' · ' + updated : '') + '</span>' +
+  '</span>' +
+  '<span class="arr">&raquo;</span>';
 
 li.appendChild(a);
 ul.appendChild(li);
 ```
 
-});
-
-document.getElementById(‘output’).innerHTML = ‘’;
-document.getElementById(‘output’).appendChild(ul);
 }
 
-function timeAgo(d) {
-const s = Math.floor((new Date() - d) / 1000);
-if (s < 60)      return ‘GERADE EBEN’;
-if (s < 3600)    return `VOR ${Math.floor(s/60)} MIN`;
-if (s < 86400)   return `VOR ${Math.floor(s/3600)} STD`;
-if (s < 604800)  return `VOR ${Math.floor(s/86400)} TAGEN`;
-if (s < 2592000) return `VOR ${Math.floor(s/604800)} WOCHEN`;
-return `VOR ${Math.floor(s/2592000)} MONATEN`;
+document.getElementById(‘out’).innerHTML = ‘’;
+document.getElementById(‘out’).appendChild(ul);
 }
 
-loadRepos();
-setInterval(loadRepos, 60000);
+function load() {
+document.getElementById(‘out’).innerHTML = ‘<div class="msg">LÄDT…</div>’;
+document.getElementById(‘cnt’).textContent = ‘LÄDT…’;
+
+var xhr = new XMLHttpRequest();
+xhr.open(‘GET’, ‘https://api.github.com/users/’ + USER + ‘/repos?sort=updated&per_page=100’, true);
+xhr.setRequestHeader(‘Accept’, ‘application/vnd.github+json’);
+xhr.timeout = 8000;
+
+xhr.onload = function() {
+if (xhr.status === 200) {
+try {
+var data = JSON.parse(xhr.responseText);
+document.getElementById(‘cnt’).textContent = data.length + ’ REPOS · LIVE’;
+render(data);
+} catch(e) {
+fallback();
+}
+} else {
+fallback();
+}
+};
+
+xhr.onerror   = fallback;
+xhr.ontimeout = fallback;
+xhr.send();
+}
+
+function fallback() {
+document.getElementById(‘cnt’).textContent = REPOS.length + ’ REPOS · CACHED’;
+render(REPOS);
+}
+
+function ago(d) {
+var s = Math.floor((new Date() - d) / 1000);
+if (s < 60)      return ‘GERADE’;
+if (s < 3600)    return ‘VOR ’ + Math.floor(s/60) + ’ MIN’;
+if (s < 86400)   return ‘VOR ’ + Math.floor(s/3600) + ’ STD’;
+if (s < 604800)  return ‘VOR ’ + Math.floor(s/86400) + ’ TAGEN’;
+return ‘VOR ’ + Math.floor(s/604800) + ’ WOCHEN’;
+}
+
+load();
+setInterval(load, 60000);
 </script>
 
 </body>
