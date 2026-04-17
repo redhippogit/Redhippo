@@ -15,12 +15,15 @@ body {
   padding:20px;
 }
 
-.wrap { max-width:900px; margin:auto; }
+.wrap {
+  max-width:800px;
+  margin:auto;
+}
 
 h1 {
   text-align:center;
   letter-spacing:0.25em;
-  font-size:40px;
+  margin-bottom:10px;
 }
 
 .sub {
@@ -30,34 +33,23 @@ h1 {
   margin-bottom:20px;
 }
 
-.status {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:12px;
-  margin-bottom:10px;
-}
-
-button {
-  background:#000;
+ul {
+  list-style:none;
   border:1px solid #440000;
-  color:#880000;
-  padding:4px 10px;
-  cursor:pointer;
 }
 
-button:hover {
-  background:#ff2200;
-  color:#000;
+li {
+  border-bottom:1px solid #220000;
 }
 
-ul { list-style:none; }
-li { border-bottom:1px solid #220000; }
+li:last-child {
+  border-bottom:none;
+}
 
 a {
   display:grid;
-  grid-template-columns: 40px 1fr 140px 40px;
-  padding:10px;
+  grid-template-columns: 40px 1fr 20px;
+  padding:12px;
   text-decoration:none;
   color:#cc1100;
 }
@@ -67,14 +59,21 @@ a:hover {
   color:#000;
 }
 
-.name { font-weight:bold; font-size:15px; }
-.meta { font-size:11px; color:#880000; }
-.stats { text-align:right; font-size:11px; }
+.num {
+  font-size:11px;
+  color:#440000;
+  text-align:right;
+}
 
-.msg {
-  text-align:center;
-  padding:30px;
-  color:#660000;
+.name {
+  font-size:16px;
+  font-weight:bold;
+  letter-spacing:0.05em;
+}
+
+.arr {
+  text-align:right;
+  color:#440000;
 }
 
 footer {
@@ -90,112 +89,42 @@ footer {
 <div class="wrap">
 
 <h1>REDHIPPO</h1>
-<div class="sub">LIVE GITHUB DASHBOARD</div>
+<div class="sub">REPOSITORY LINKS</div>
 
-<div class="status">
-  <span id="cnt">VERBINDE...</span>
-  <button onclick="load()">↺ RELOAD</button>
-</div>
+<ul>
 
-<div id="out" class="msg">LÄDT...</div>
+<li><a href="https://redhippogit.github.io/Testsnob/" target="_blank"><span class="num">01</span><span class="name">TESTSNOB</span><span class="arr">></span></a></li>
+
+<li><a href="https://redhippogit.github.io/Steel/" target="_blank"><span class="num">02</span><span class="name">STEEL</span><span class="arr">></span></a></li>
+
+<li><a href="https://redhippogit.github.io/SNOB/" target="_blank"><span class="num">03</span><span class="name">SNOB</span><span class="arr">></span></a></li>
+
+<li><a href="https://redhippogit.github.io/Ferien/" target="_blank"><span class="num">04</span><span class="name">FERIEN</span><span class="arr">></span></a></li>
+
+<li><a href="https://redhippogit.github.io/Leagal/" target="_blank"><span class="num">05</span><span class="name">LEAGAL</span><span class="arr">></span></a></li>
+
+<li><a href="https://redhippogit.github.io/Ferienpass/" target="_blank"><span class="num">06</span><span class="name">FERIENPASS</span><span class="arr">></span></a></li>
+
+<li><a href="https://redhippogit.github.io/CI/" target="_blank"><span class="num">07</span><span class="name">CI</span><span class="arr">></span></a></li>
+
+<li><a href="https://redhippogit.github.io/sober/" target="_blank"><span class="num">08</span><span class="name">SOBER</span><span class="arr">></span></a></li>
+
+<li><a href="https://redhippogit.github.io/jensjob/" target="_blank"><span class="num">09</span><span class="name">JENSJOB</span><span class="arr">></span></a></li>
+
+<li><a href="https://redhippogit.github.io/Vanjens/" target="_blank"><span class="num">10</span><span class="name">VANJENS</span><span class="arr">></span></a></li>
+
+<li><a href="https://redhippogit.github.io/Fam/" target="_blank"><span class="num">11</span><span class="name">FAM</span><span class="arr">></span></a></li>
+
+<li><a href="https://redhippogit.github.io/Familea/" target="_blank"><span class="num">12</span><span class="name">FAMILEA</span><span class="arr">></span></a></li>
+
+<li><a href="https://redhippogit.github.io/helvetiaholt/" target="_blank"><span class="num">13</span><span class="name">HELVETIAHOLT</span><span class="arr">></span></a></li>
+
+</ul>
 
 <footer>
-BUILT AT 3AM · <span id="time">--:--</span>
+REDHIPPO · STATIC LINKS
 </footer>
 
 </div>
-
-<script>
-const USER = "redhippogit"; // <-- HIER DEIN USERNAME ÄNDERN
-
-setInterval(() => {
-  const now = new Date();
-  document.getElementById("time").textContent =
-    now.toLocaleTimeString("de-CH",{hour:"2-digit",minute:"2-digit"});
-}, 1000);
-
-let dots = 0;
-setInterval(() => {
-  const el = document.getElementById("out");
-  if (el.classList.contains("msg")) {
-    dots = (dots + 1) % 4;
-    el.textContent = "LÄDT" + ".".repeat(dots);
-  }
-}, 400);
-
-async function load() {
-  document.getElementById("out").className = "msg";
-  document.getElementById("out").textContent = "LÄDT...";
-  document.getElementById("cnt").textContent = "VERBINDE...";
-
-  try {
-    const res = await fetch(
-      "https://api.github.com/users/" + USER + "/repos?per_page=100&sort=updated"
-    );
-
-    const data = await res.json();
-
-    document.getElementById("cnt").textContent =
-      data.length + " REPOS · LIVE";
-
-    render(data);
-
-  } catch (e) {
-    fallback();
-  }
-}
-
-function render(list) {
-  const ul = document.createElement("ul");
-
-  list.forEach((r, i) => {
-    const li = document.createElement("li");
-    const a  = document.createElement("a");
-
-    const url = r.homepage ? r.homepage : r.html_url;
-    const updated = ago(new Date(r.updated_at));
-
-    a.href = url;
-    a.target = "_blank";
-
-    a.innerHTML = `
-      <span>${String(i+1).padStart(2,"0")}</span>
-      <span>
-        <div class="name">${r.name}</div>
-        <div class="meta">${r.description || "-"} · ${updated}</div>
-      </span>
-      <span class="stats">★ ${r.stargazers_count} / 🍴 ${r.forks_count}</span>
-      <span>→</span>
-    `;
-
-    li.appendChild(a);
-    ul.appendChild(li);
-  });
-
-  const out = document.getElementById("out");
-  out.className = "";
-  out.innerHTML = "";
-  out.appendChild(ul);
-}
-
-function fallback() {
-  document.getElementById("cnt").textContent = "OFFLINE";
-  document.getElementById("out").innerHTML =
-    '<div class="msg">KEINE VERBINDUNG</div>';
-}
-
-function ago(d) {
-  const s = Math.floor((new Date() - d) / 1000);
-  if (s < 60) return "JETZT";
-  if (s < 3600) return Math.floor(s/60) + " MIN";
-  if (s < 86400) return Math.floor(s/3600) + " STD";
-  if (s < 604800) return Math.floor(s/86400) + " TAGE";
-  return Math.floor(s/604800) + " WOCHEN";
-}
-
-load();
-setInterval(load, 300000);
-</script>
-
 </body>
 </html>
