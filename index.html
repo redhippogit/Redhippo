@@ -1,129 +1,272 @@
 <!DOCTYPE html>
+
 <html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
 <title>REDHIPPO</title>
-
 <style>
-* {margin:0;padding:0;box-sizing:border-box;}
+* { margin:0; padding:0; box-sizing:border-box; }
 
-body {
-  background:#000;
-  color:#ff2200;
-  font-family: monospace;
-  padding:20px;
+html, body {
+background: #000 !important;
+color: #ff2200;
+font-family: ‘Courier New’, Courier, monospace;
+min-height: 100vh;
 }
+
+body { padding: 16px; }
 
 .wrap {
-  max-width:800px;
-  margin:auto;
+max-width: 800px;
+margin: 0 auto;
 }
 
-h1 {
-  text-align:center;
-  letter-spacing:0.25em;
-  margin-bottom:10px;
+/* HEADER */
+.hdr {
+border: 2px solid #ff2200;
+padding: 20px 16px 16px;
+margin-bottom: 16px;
+text-align: center;
+background: #000;
 }
 
-.sub {
-  text-align:center;
-  font-size:12px;
-  color:#660000;
-  margin-bottom:20px;
+.hdr h1 {
+font-size: clamp(26px, 9vw, 54px);
+font-weight: bold;
+letter-spacing: 0.18em;
+color: #ff2200;
 }
 
+.hdr p {
+font-size: clamp(11px, 3vw, 15px);
+color: #880000;
+letter-spacing: 0.35em;
+margin-top: 5px;
+}
+
+.hdr hr {
+border: none;
+border-top: 1px solid #440000;
+margin: 12px 0;
+}
+
+.hdr small {
+font-size: clamp(10px, 2vw, 12px);
+color: #550000;
+letter-spacing: 0.15em;
+}
+
+/* STATUS */
+.bar {
+border: 1px solid #440000;
+border-bottom: none;
+padding: 6px 12px;
+font-size: clamp(10px, 2.5vw, 12px);
+color: #550000;
+letter-spacing: 0.12em;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 4px;
+background: #000;
+}
+
+.dot {
+display: inline-block;
+width: 7px; height: 7px;
+background: #ff2200;
+border-radius: 50%;
+margin-right: 5px;
+vertical-align: middle;
+animation: bl 1.5s step-end infinite;
+}
+
+/* LIST */
 ul {
-  list-style:none;
-  border:1px solid #440000;
+list-style: none;
+border: 1px solid #440000;
+background: #000;
 }
 
-li {
-  border-bottom:1px solid #220000;
-}
-
-li:last-child {
-  border-bottom:none;
-}
+li { border-bottom: 1px solid #1a0000; }
+li:last-child { border-bottom: none; }
 
 a {
-  display:grid;
-  grid-template-columns: 40px 1fr 20px;
-  padding:12px;
-  text-decoration:none;
-  color:#cc1100;
+display: grid;
+grid-template-columns: 28px 1fr 20px;
+align-items: center;
+gap: 10px;
+padding: 11px 12px;
+text-decoration: none;
+color: #cc1100;
+background: #000;
+font-family: ‘Courier New’, monospace;
+-webkit-tap-highlight-color: rgba(255,34,0,0.15);
 }
 
-a:hover {
-  background:#ff2200;
-  color:#000;
+a:hover, a:active {
+background: #ff2200 !important;
+color: #000 !important;
 }
 
-.num {
-  font-size:11px;
-  color:#440000;
-  text-align:right;
+a:hover .d, a:active .d { color: #000 !important; }
+a:hover .n, a:active .n { color: #000 !important; }
+a:hover .ar,a:active .ar{ color: #000 !important; }
+
+.n  { font-size:11px; color:#440000; text-align:right; }
+
+.inf {
+display: flex;
+flex-direction: column;
+min-width: 0;
 }
 
-.name {
-  font-size:16px;
-  font-weight:bold;
-  letter-spacing:0.05em;
+.nm {
+font-size: clamp(14px, 4vw, 19px);
+font-weight: bold;
+letter-spacing: 0.06em;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 }
 
-.arr {
-  text-align:right;
-  color:#440000;
+.d {
+font-size: clamp(10px, 2.5vw, 12px);
+color: #880000;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+margin-top: 1px;
 }
 
+.ar { font-size:16px; color:#440000; text-align:right; }
+
+/* FOOTER */
 footer {
-  margin-top:20px;
-  text-align:center;
-  font-size:10px;
-  color:#440000;
+border: 1px solid #220000;
+border-top: 1px solid #440000;
+margin-top: 16px;
+padding: 10px;
+text-align: center;
+font-size: clamp(9px, 2vw, 11px);
+color: #440000;
+letter-spacing: 0.15em;
+background: #000;
 }
-</style>
-</head>
 
+@keyframes bl { 50% { opacity:0; } }
+</style>
+
+</head>
 <body>
 <div class="wrap">
 
-<h1>REDHIPPO</h1>
-<div class="sub">REPOSITORY LINKS</div>
+  <div class="hdr">
+    <h1>// REDHIPPO //</h1>
+    <p>INSOMNIA VIBE CODER</p>
+    <hr>
+    <small>14 REPOS &nbsp;·&nbsp; GITHUB PAGES &nbsp;·&nbsp; 2026</small>
+  </div>
 
-<ul>
+  <div class="bar">
+    <span><span class="dot"></span>redhippogit.github.io</span>
+    <span>14 PROJEKTE</span>
+  </div>
 
-<li><a href="https://redhippogit.github.io/Testsnob/" target="_blank"><span class="num">01</span><span class="name">TESTSNOB</span><span class="arr">></span></a></li>
+  <ul>
 
-<li><a href="https://redhippogit.github.io/Steel/" target="_blank"><span class="num">02</span><span class="name">STEEL</span><span class="arr">></span></a></li>
+```
+<li><a href="https://redhippogit.github.io/SNOB/" target="_blank" rel="noopener">
+  <span class="n">01</span>
+  <span class="inf"><span class="nm">SNOB</span><span class="d">Premium UI — nur das Beste, kein Kompromiss</span></span>
+  <span class="ar">»</span>
+</a></li>
 
-<li><a href="https://redhippogit.github.io/SNOB/" target="_blank"><span class="num">03</span><span class="name">SNOB</span><span class="arr">></span></a></li>
+<li><a href="https://redhippogit.github.io/Ferienpass/" target="_blank" rel="noopener">
+  <span class="n">02</span>
+  <span class="inf"><span class="nm">FERIENPASS</span><span class="d">Aktivitäten & Angebote für Kids — kompakt</span></span>
+  <span class="ar">»</span>
+</a></li>
 
-<li><a href="https://redhippogit.github.io/Ferien/" target="_blank"><span class="num">04</span><span class="name">FERIEN</span><span class="arr">></span></a></li>
+<li><a href="https://redhippogit.github.io/jensjob/" target="_blank" rel="noopener">
+  <span class="n">03</span>
+  <span class="inf"><span class="nm">JENSJOB</span><span class="d">Job-Profil — wer Jens ist und was er draufhat</span></span>
+  <span class="ar">»</span>
+</a></li>
 
-<li><a href="https://redhippogit.github.io/Leagal/" target="_blank"><span class="num">05</span><span class="name">LEAGAL</span><span class="arr">></span></a></li>
+<li><a href="https://redhippogit.github.io/Leagal/" target="_blank" rel="noopener">
+  <span class="n">04</span>
+  <span class="inf"><span class="nm">LEAGAL</span><span class="d">Legal-Seite — Impressum & Datenschutz</span></span>
+  <span class="ar">»</span>
+</a></li>
 
-<li><a href="https://redhippogit.github.io/Ferienpass/" target="_blank"><span class="num">06</span><span class="name">FERIENPASS</span><span class="arr">></span></a></li>
+<li><a href="https://redhippogit.github.io/Fam/" target="_blank" rel="noopener">
+  <span class="n">05</span>
+  <span class="inf"><span class="nm">FAM</span><span class="d">Familien-Seite — privat, persönlich, für die die zählen</span></span>
+  <span class="ar">»</span>
+</a></li>
 
-<li><a href="https://redhippogit.github.io/CI/" target="_blank"><span class="num">07</span><span class="name">CI</span><span class="arr">></span></a></li>
+<li><a href="https://redhippogit.github.io/Redhippo/" target="_blank" rel="noopener">
+  <span class="n">06</span>
+  <span class="inf"><span class="nm">REDHIPPO</span><span class="d">Diese Seite — das Dashboard</span></span>
+  <span class="ar">»</span>
+</a></li>
 
-<li><a href="https://redhippogit.github.io/sober/" target="_blank"><span class="num">08</span><span class="name">SOBER</span><span class="arr">></span></a></li>
+<li><a href="https://redhippogit.github.io/Steel/" target="_blank" rel="noopener">
+  <span class="n">07</span>
+  <span class="inf"><span class="nm">STEEL</span><span class="d">Hartes Projekt — built tough, designed to last</span></span>
+  <span class="ar">»</span>
+</a></li>
 
-<li><a href="https://redhippogit.github.io/jensjob/" target="_blank"><span class="num">09</span><span class="name">JENSJOB</span><span class="arr">></span></a></li>
+<li><a href="https://redhippogit.github.io/sober/" target="_blank" rel="noopener">
+  <span class="n">08</span>
+  <span class="inf"><span class="nm">SOBER</span><span class="d">Clean & minimal — kein Bullshit, nur das Wesentliche</span></span>
+  <span class="ar">»</span>
+</a></li>
 
-<li><a href="https://redhippogit.github.io/Vanjens/" target="_blank"><span class="num">10</span><span class="name">VANJENS</span><span class="arr">></span></a></li>
+<li><a href="https://redhippogit.github.io/Vanjens/" target="_blank" rel="noopener">
+  <span class="n">09</span>
+  <span class="inf"><span class="nm">VANJENS</span><span class="d">Van-Life Seite — on the road vibes</span></span>
+  <span class="ar">»</span>
+</a></li>
 
-<li><a href="https://redhippogit.github.io/Fam/" target="_blank"><span class="num">11</span><span class="name">FAM</span><span class="arr">></span></a></li>
+<li><a href="https://redhippogit.github.io/Familea/" target="_blank" rel="noopener">
+  <span class="n">10</span>
+  <span class="inf"><span class="nm">FAMILEA</span><span class="d">Familien-Community — Service & Infos</span></span>
+  <span class="ar">»</span>
+</a></li>
 
-<li><a href="https://redhippogit.github.io/Familea/" target="_blank"><span class="num">12</span><span class="name">FAMILEA</span><span class="arr">></span></a></li>
+<li><a href="https://redhippogit.github.io/Testsnob/" target="_blank" rel="noopener">
+  <span class="n">11</span>
+  <span class="inf"><span class="nm">TESTSNOB</span><span class="d">Playground & Sandbox — Ideen-Labor</span></span>
+  <span class="ar">»</span>
+</a></li>
 
-<li><a href="https://redhippogit.github.io/helvetiaholt/" target="_blank"><span class="num">13</span><span class="name">HELVETIAHOLT</span><span class="arr">></span></a></li>
+<li><a href="https://redhippogit.github.io/Ferien/" target="_blank" rel="noopener">
+  <span class="n">12</span>
+  <span class="inf"><span class="nm">FERIEN</span><span class="d">Ferienplaner — Freizeit digital organisiert</span></span>
+  <span class="ar">»</span>
+</a></li>
 
-</ul>
+<li><a href="https://redhippogit.github.io/CI/" target="_blank" rel="noopener">
+  <span class="n">13</span>
+  <span class="inf"><span class="nm">CI</span><span class="d">Corporate Identity — Brand-Kit & Style-Guide</span></span>
+  <span class="ar">»</span>
+</a></li>
 
-<footer>
-REDHIPPO · STATIC LINKS
-</footer>
+<li><a href="https://redhippogit.github.io/helvetiaholt/" target="_blank" rel="noopener">
+  <span class="n">14</span>
+  <span class="inf"><span class="nm">HELVETIAHOLT</span><span class="d">Swiss-Roots — lokal & bodenständig</span></span>
+  <span class="ar">»</span>
+</a></li>
+```
+
+  </ul>
+
+  <footer>REDHIPPO &nbsp;·&nbsp; BUILT AT 3AM &nbsp;·&nbsp; CAFFEINE POWERED &nbsp;·&nbsp; ZERO REGRETS</footer>
 
 </div>
 </body>
