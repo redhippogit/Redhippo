@@ -8,22 +8,15 @@
 <title>REDHIPPO</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-
 html, body {
-background: #000 !important;
-color: #ff2200;
-font-family: ‘Courier New’, Courier, monospace;
-min-height: 100vh;
+  background: #000 !important;
+  color: #ff2200;
+  font-family: 'Courier New', Courier, monospace;
+  min-height: 100vh;
 }
-
 body { padding: 16px; }
+.wrap { max-width: 800px; margin: 0 auto; }
 
-.wrap {
-max-width: 800px;
-margin: 0 auto;
-}
-
-/* HEADER */
 .hdr {
 border: 2px solid #ff2200;
 padding: 20px 16px 16px;
@@ -31,133 +24,85 @@ margin-bottom: 16px;
 text-align: center;
 background: #000;
 }
-
+.hdr img {
+width: clamp(80px, 20vw, 140px);
+height: auto;
+display: block;
+margin: 0 auto 10px;
+image-rendering: pixelated;
+}
 .hdr h1 {
-font-size: clamp(26px, 9vw, 54px);
+font-size: clamp(24px, 8vw, 50px);
 font-weight: bold;
 letter-spacing: 0.18em;
 color: #ff2200;
+line-height: 1;
 }
-
 .hdr p {
 font-size: clamp(11px, 3vw, 15px);
 color: #880000;
 letter-spacing: 0.35em;
 margin-top: 5px;
 }
+.hdr hr { border:none; border-top:1px solid #440000; margin:12px 0; }
+.hdr small { font-size:clamp(10px,2vw,12px); color:#550000; letter-spacing:0.15em; }
 
-.hdr hr {
-border: none;
-border-top: 1px solid #440000;
-margin: 12px 0;
-}
-
-.hdr small {
-font-size: clamp(10px, 2vw, 12px);
-color: #550000;
-letter-spacing: 0.15em;
-}
-
-/* STATUS */
 .bar {
-border: 1px solid #440000;
-border-bottom: none;
-padding: 6px 12px;
-font-size: clamp(10px, 2.5vw, 12px);
-color: #550000;
-letter-spacing: 0.12em;
-display: flex;
-justify-content: space-between;
-align-items: center;
-flex-wrap: wrap;
-gap: 4px;
-background: #000;
+border:1px solid #440000; border-bottom:none;
+padding:6px 12px; font-size:clamp(10px,2.5vw,12px);
+color:#550000; letter-spacing:0.12em;
+display:flex; justify-content:space-between;
+align-items:center; flex-wrap:wrap; gap:4px; background:#000;
 }
-
 .dot {
-display: inline-block;
-width: 7px; height: 7px;
-background: #ff2200;
-border-radius: 50%;
-margin-right: 5px;
-vertical-align: middle;
-animation: bl 1.5s step-end infinite;
+display:inline-block; width:7px; height:7px;
+background:#ff2200; border-radius:50%;
+margin-right:5px; vertical-align:middle;
+animation:bl 1.5s step-end infinite;
 }
 
-/* LIST */
-ul {
-list-style: none;
-border: 1px solid #440000;
-background: #000;
-}
-
-li { border-bottom: 1px solid #1a0000; }
-li:last-child { border-bottom: none; }
+ul { list-style:none; border:1px solid #440000; background:#000; }
+li { border-bottom:1px solid #1a0000; }
+li:last-child { border-bottom:none; }
 
 a {
-display: grid;
-grid-template-columns: 28px 1fr 20px;
-align-items: center;
-gap: 10px;
-padding: 11px 12px;
-text-decoration: none;
-color: #cc1100;
-background: #000;
-font-family: ‘Courier New’, monospace;
--webkit-tap-highlight-color: rgba(255,34,0,0.15);
+display:grid; grid-template-columns:28px 1fr 20px;
+align-items:center; gap:10px; padding:13px 12px;
+text-decoration:none; color:#cc1100; background:#000;
+font-family:‘Courier New’,monospace;
+-webkit-tap-highlight-color:rgba(255,34,0,0.15);
+min-height: 52px;
 }
-
-a:hover, a:active {
-background: #ff2200 !important;
-color: #000 !important;
-}
-
-a:hover .d, a:active .d { color: #000 !important; }
-a:hover .n, a:active .n { color: #000 !important; }
-a:hover .ar,a:active .ar{ color: #000 !important; }
+a:hover, a:active { background:#ff2200 !important; color:#000 !important; }
+a:hover .d, a:active .d { color:#000 !important; }
+a:hover .n, a:active .n { color:#000 !important; }
+a:hover .ar,a:active .ar{ color:#000 !important; }
 
 .n  { font-size:11px; color:#440000; text-align:right; }
-
-.inf {
-display: flex;
-flex-direction: column;
-min-width: 0;
-}
-
+.inf { display:flex; flex-direction:column; min-width:0; }
 .nm {
-font-size: clamp(14px, 4vw, 19px);
-font-weight: bold;
-letter-spacing: 0.06em;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
+font-size:clamp(15px,4vw,20px); font-weight:bold;
+letter-spacing:0.06em;
+white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
-
 .d {
-font-size: clamp(10px, 2.5vw, 12px);
-color: #880000;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-margin-top: 1px;
+font-size:clamp(10px,2.5vw,12px); color:#880000;
+white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px;
 }
+.ar { font-size:18px; color:#440000; text-align:right; }
 
-.ar { font-size:16px; color:#440000; text-align:right; }
-
-/* FOOTER */
 footer {
-border: 1px solid #220000;
-border-top: 1px solid #440000;
-margin-top: 16px;
-padding: 10px;
-text-align: center;
-font-size: clamp(9px, 2vw, 11px);
-color: #440000;
-letter-spacing: 0.15em;
-background: #000;
+border:1px solid #220000; border-top:1px solid #440000;
+margin-top:16px; padding:10px; text-align:center;
+font-size:clamp(9px,2vw,11px); color:#440000;
+letter-spacing:0.15em; background:#000;
 }
-
 @keyframes bl { 50% { opacity:0; } }
+
+@media (max-width: 400px) {
+a { grid-template-columns: 1fr 18px; }
+.n { display: none; }
+}
 </style>
 
 </head>
@@ -165,6 +110,7 @@ background: #000;
 <div class="wrap">
 
   <div class="hdr">
+    <img src="data:image/png;base64,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OGBY6IC7pW7aAd/6Zx7kX34aDT9d5Hme0lT6ykjd+Ne85jXXXXcd9ZDwVVddlRIWBgcG/+qv/ur444/vv/X+979/48aNG3644dd//depdQZcfvk7169fv379+je84Q3UoaYbbrjh3PPOS1/04he/+Prrr0+vV61a9Vc33LBi5Urg8ssv/6M/+qO0feXKlV//+tdXrVpFrbDPff7zjz766Gc+85l9LiSJe+GFLFIWZRxrf4qiKMsy/Z+2pOe3YnTFiSeeSD2IOzIycu21115wwQUzszNnnnlmSroqiuJ973vfc57znItfdvElr31dWZYXXXSR7bIsL7vssksuee2ll176pje96T3vec+rXvWqdPxTTjnlxhtvHBkZWbNmzTe/+c2TTz45fWmM8ZLXvvbrX/saMDoyetxxx1V3OYSTTz45RcVs//mf//ntt912/vnn33XX95Io+/YsxSAWXsgiZVGGG/okN+iYY475zd/8zaIsO+32+kce+ZNPfaq/Q1EUKZUg9fOHh5ddc801v/ze9y5fvnxsbEeyapKuvfbaD3zgA1/92leFPnb11d/5znfa7fbc3NyRRx7ZarU2btwIDA8Pj46OpsP2er3f/+hHv/zlL3e73f/8n/+/yy9/R9o+ODDw+OOP33jjjR//xCcefOCB/viPpH52MnDis078yy1/8fTTT2/duiXpPl3IyMjIFVdc0el0sjwfHx//yFVX9RZENxYXi1tYiV6vt2XLljKWeZbvGBtb+JZTdeMaiY2PbvzstZ+98cYbX3DOC6ampwDba9asufXWW2+44Ybx8fGPfvSjEtd/8XogKPTVYDvWkTPb99xzzy233BJjedRRR//cOy/vf4PxZz/72de+9pL/9t+u/9znPjd/Jgt88MmpyU9/+jOPPfbYKaecevfd3+9vL8u4ZcuWdruVZfnExMSidtoXt7DS0xobG/vDP/zDA+7QbrUHBwZZ0NZ02p2JiYnf+q3/90tf/tLQYDWEs2rVqne9613JbGzbtu3OO+9M22/+xjdOOuXkL3zhi+Af3HPP7bfdnra3Wu08zzZs2AA864RnDQwOpO1lLPM8z1v5l750w0tfeuGxxxyTtscYsyzrn8Py5cuvvvrqL37xiz/3rnf967e8pX8hU1OTn/zkJw/1Tf3JsLg9xPnLqAfm9okR7Nmz5/7773/88cdTmGDr1q1r164dGxvbtm3rww899PDDD3e73RDC1q1bt23bNjw8PDY2dvPNN69bty71BMfHx7ds3jw4MLBp8+YbbrjhySefTOJ49NFH77///qmpaWBycnLdg+se3fgoUBTFww8/vGHDhrIs169f/8C6dU8++SRQluWGDRsefvjh5Dk98cQT3/72t7ds2fLYY4+tW7fu0Ucf3f9C+gkRDYuJfTr/CwMK+7zuDxL3k1t+vK/Y/90f9YCLiyXSK/yHWKgMIA8h1DkJeyUe2Bm06jiW7FCtGGDbKQRgGzt9JISgKoUL1X9mqWpy6hBABnn9DYJ2lvW/Ln1zGnxcRPMjGhoOPUvEx/onSU3OyxV2wglwPGyFl6IIe+DthH8LPXgSgF9AP0sYgYf3zoZ6C9nlhLV4BnL4FWUvJPwAG85Cv0U4TboPF/BC9GvKz0Xr8RS8UNkV7cHnKTwQy+6hvhUHh8PFDqfrPE/5Cuk4OE0CXgRHA3Au4Ta4SFkKaD6H8HfiXmB+4VNOhOeKrxBPBeAtCmP4aXwZGXAuuhfvMG9XDrwY7cZfoUypEaebHxZzG8reL6DD5KYfDte44GpFRzLqGmC2Xu+UkF2Ut7qwB4AshHNCmNZeefSDaJa4Ft8DQMc86rhJrEDAHHoQPSkNoXTkk6SVKE1eniW+CJ6HfgAcHmW3DhdhJQHd6PKtITuB8B0M5K7ieIG4tiwHzXIAWrAx+qg6KzCxB9qEyxReqQA8DWcTnmeeIgJtcYl0Ft7qEmjZT9gZXgXAKOE6x+tc/qvD5qYfLj4WINhuj8d4HzGF58fRZpiBPeYU6b8TNwLQNSdKU/ixuh0U7IEJOA6+jkt4FB8Lu/BNGBiD4+FxfDMGtsMatBIeglnYDZthF2xBY4eHxTq8WLJRo58+DiOLldCBXoe9m6d+gGr/XMJs4ZT8vdcAy/b7M+ydG02j7IaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhsXM/w/w1OKCRHcYnwAAAABJRU5ErkJggg==" alt="RedHippo Logo">
     <h1>// REDHIPPO //</h1>
     <p>INSOMNIA VIBE CODER</p>
     <hr>
@@ -177,93 +123,48 @@ background: #000;
   </div>
 
   <ul>
-
-```
-<li><a href="https://redhippogit.github.io/SNOB/" target="_blank" rel="noopener">
-  <span class="n">01</span>
-  <span class="inf"><span class="nm">SNOB</span><span class="d">Premium UI — nur das Beste, kein Kompromiss</span></span>
-  <span class="ar">»</span>
-</a></li>
-
-<li><a href="https://redhippogit.github.io/Ferienpass/" target="_blank" rel="noopener">
-  <span class="n">02</span>
-  <span class="inf"><span class="nm">FERIENPASS</span><span class="d">Aktivitäten & Angebote für Kids — kompakt</span></span>
-  <span class="ar">»</span>
-</a></li>
-
-<li><a href="https://redhippogit.github.io/jensjob/" target="_blank" rel="noopener">
-  <span class="n">03</span>
-  <span class="inf"><span class="nm">JENSJOB</span><span class="d">Job-Profil — wer Jens ist und was er draufhat</span></span>
-  <span class="ar">»</span>
-</a></li>
-
-<li><a href="https://redhippogit.github.io/Leagal/" target="_blank" rel="noopener">
-  <span class="n">04</span>
-  <span class="inf"><span class="nm">LEAGAL</span><span class="d">Legal-Seite — Impressum & Datenschutz</span></span>
-  <span class="ar">»</span>
-</a></li>
-
-<li><a href="https://redhippogit.github.io/Fam/" target="_blank" rel="noopener">
-  <span class="n">05</span>
-  <span class="inf"><span class="nm">FAM</span><span class="d">Familien-Seite — privat, persönlich, für die die zählen</span></span>
-  <span class="ar">»</span>
-</a></li>
-
-<li><a href="https://redhippogit.github.io/Redhippo/" target="_blank" rel="noopener">
-  <span class="n">06</span>
-  <span class="inf"><span class="nm">REDHIPPO</span><span class="d">Diese Seite — das Dashboard</span></span>
-  <span class="ar">»</span>
-</a></li>
-
-<li><a href="https://redhippogit.github.io/Steel/" target="_blank" rel="noopener">
-  <span class="n">07</span>
-  <span class="inf"><span class="nm">STEEL</span><span class="d">Hartes Projekt — built tough, designed to last</span></span>
-  <span class="ar">»</span>
-</a></li>
-
-<li><a href="https://redhippogit.github.io/sober/" target="_blank" rel="noopener">
-  <span class="n">08</span>
-  <span class="inf"><span class="nm">SOBER</span><span class="d">Clean & minimal — kein Bullshit, nur das Wesentliche</span></span>
-  <span class="ar">»</span>
-</a></li>
-
-<li><a href="https://redhippogit.github.io/Vanjens/" target="_blank" rel="noopener">
-  <span class="n">09</span>
-  <span class="inf"><span class="nm">VANJENS</span><span class="d">Van-Life Seite — on the road vibes</span></span>
-  <span class="ar">»</span>
-</a></li>
-
-<li><a href="https://redhippogit.github.io/Familea/" target="_blank" rel="noopener">
-  <span class="n">10</span>
-  <span class="inf"><span class="nm">FAMILEA</span><span class="d">Familien-Community — Service & Infos</span></span>
-  <span class="ar">»</span>
-</a></li>
-
-<li><a href="https://redhippogit.github.io/Testsnob/" target="_blank" rel="noopener">
-  <span class="n">11</span>
-  <span class="inf"><span class="nm">TESTSNOB</span><span class="d">Playground & Sandbox — Ideen-Labor</span></span>
-  <span class="ar">»</span>
-</a></li>
-
-<li><a href="https://redhippogit.github.io/Ferien/" target="_blank" rel="noopener">
-  <span class="n">12</span>
-  <span class="inf"><span class="nm">FERIEN</span><span class="d">Ferienplaner — Freizeit digital organisiert</span></span>
-  <span class="ar">»</span>
-</a></li>
-
-<li><a href="https://redhippogit.github.io/CI/" target="_blank" rel="noopener">
-  <span class="n">13</span>
-  <span class="inf"><span class="nm">CI</span><span class="d">Corporate Identity — Brand-Kit & Style-Guide</span></span>
-  <span class="ar">»</span>
-</a></li>
-
-<li><a href="https://redhippogit.github.io/helvetiaholt/" target="_blank" rel="noopener">
-  <span class="n">14</span>
-  <span class="inf"><span class="nm">HELVETIAHOLT</span><span class="d">Swiss-Roots — lokal & bodenständig</span></span>
-  <span class="ar">»</span>
-</a></li>
-```
-
+    <li><a href="https://redhippogit.github.io/SNOB/" target="_blank" rel="noopener">
+      <span class="n">01</span><span class="inf"><span class="nm">SNOB</span><span class="d">Premium UI — nur das Beste, kein Kompromiss</span></span><span class="ar">»</span>
+    </a></li>
+    <li><a href="https://redhippogit.github.io/Ferienpass/" target="_blank" rel="noopener">
+      <span class="n">02</span><span class="inf"><span class="nm">FERIENPASS</span><span class="d">Aktivitäten & Angebote für Kids — kompakt</span></span><span class="ar">»</span>
+    </a></li>
+    <li><a href="https://redhippogit.github.io/jensjob/" target="_blank" rel="noopener">
+      <span class="n">03</span><span class="inf"><span class="nm">JENSJOB</span><span class="d">Job-Profil — wer Jens ist und was er draufhat</span></span><span class="ar">»</span>
+    </a></li>
+    <li><a href="https://redhippogit.github.io/Leagal/" target="_blank" rel="noopener">
+      <span class="n">04</span><span class="inf"><span class="nm">LEAGAL</span><span class="d">Legal-Seite — Impressum & Datenschutz</span></span><span class="ar">»</span>
+    </a></li>
+    <li><a href="https://redhippogit.github.io/Fam/" target="_blank" rel="noopener">
+      <span class="n">05</span><span class="inf"><span class="nm">FAM</span><span class="d">Familien-Seite — privat, persönlich, für die die zählen</span></span><span class="ar">»</span>
+    </a></li>
+    <li><a href="https://redhippogit.github.io/Redhippo/" target="_blank" rel="noopener">
+      <span class="n">06</span><span class="inf"><span class="nm">REDHIPPO</span><span class="d">Diese Seite — das Dashboard</span></span><span class="ar">»</span>
+    </a></li>
+    <li><a href="https://redhippogit.github.io/Steel/" target="_blank" rel="noopener">
+      <span class="n">07</span><span class="inf"><span class="nm">STEEL</span><span class="d">Hartes Projekt — built tough, designed to last</span></span><span class="ar">»</span>
+    </a></li>
+    <li><a href="https://redhippogit.github.io/sober/" target="_blank" rel="noopener">
+      <span class="n">08</span><span class="inf"><span class="nm">SOBER</span><span class="d">Clean & minimal — kein Bullshit, nur das Wesentliche</span></span><span class="ar">»</span>
+    </a></li>
+    <li><a href="https://redhippogit.github.io/Vanjens/" target="_blank" rel="noopener">
+      <span class="n">09</span><span class="inf"><span class="nm">VANJENS</span><span class="d">Van-Life Seite — on the road vibes</span></span><span class="ar">»</span>
+    </a></li>
+    <li><a href="https://redhippogit.github.io/Familea/" target="_blank" rel="noopener">
+      <span class="n">10</span><span class="inf"><span class="nm">FAMILEA</span><span class="d">Familien-Community — Service & Infos</span></span><span class="ar">»</span>
+    </a></li>
+    <li><a href="https://redhippogit.github.io/Testsnob/" target="_blank" rel="noopener">
+      <span class="n">11</span><span class="inf"><span class="nm">TESTSNOB</span><span class="d">Playground & Sandbox — Ideen-Labor</span></span><span class="ar">»</span>
+    </a></li>
+    <li><a href="https://redhippogit.github.io/Ferien/" target="_blank" rel="noopener">
+      <span class="n">12</span><span class="inf"><span class="nm">FERIEN</span><span class="d">Ferienplaner — Freizeit digital organisiert</span></span><span class="ar">»</span>
+    </a></li>
+    <li><a href="https://redhippogit.github.io/CI/" target="_blank" rel="noopener">
+      <span class="n">13</span><span class="inf"><span class="nm">CI</span><span class="d">Corporate Identity — Brand-Kit & Style-Guide</span></span><span class="ar">»</span>
+    </a></li>
+    <li><a href="https://redhippogit.github.io/helvetiaholt/" target="_blank" rel="noopener">
+      <span class="n">14</span><span class="inf"><span class="nm">HELVETIAHOLT</span><span class="d">Swiss-Roots — lokal & bodenständig</span></span><span class="ar">»</span>
+    </a></li>
   </ul>
 
   <footer>REDHIPPO &nbsp;·&nbsp; BUILT AT 3AM &nbsp;·&nbsp; CAFFEINE POWERED &nbsp;·&nbsp; ZERO REGRETS</footer>
